@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+     <h2> Course enrolled in: {{course}}!</h2>
+  </div>
+</div>
+
+<div class="container">
+        <p>Profile Picture Upload</p>
+           <img alt="" src="{{image}}" />
+        <form id='form'> 
+          {{!-- User contact information fields, their phone number, emergency contact name and emergency contact --}}
+           <input type ="hidden" value="{{id}}" id="userId">
+            <div class="input-group">
+                <label for='phoneNumber'>Phone Number</label>
+                <input name='phoneNumber' id='phoneNumber' placeholder="Phone Number" />
+            </div>
+             <div class="input-group">
+                <label for='emergencyName'>Emergency Contact Name</label>
+                <input name='emergencyName' id='emergencyName' placeholder="Emergency Name" />
+            </div>
+             <div class="input-group">
+                <label for='emergencyPhone'>Emergency Contact Phone Number</label>
+                <input name='emergencyPhone' id='emergencyPhone' placeholder="Emergency Phone" />
+            </div>
+            <div class="input-group">
+                <label for='files'>Select files</label>
+                <input id='files' type="file" multiple>
+            </div>
+            <button class="submit-btn" type='submit'>Upload</button>
+        </form>
+    </div>
+    <script src='./script.js'></script>
+</body>
+<p> Full Name: {{name}} </p>
+<p> Course: {{course}}</p>
+
+<script>
+  $(function() {
+  $("#accordion").accordion({
+    collapsible: true
+  });
+} 
+);
+</script>
+
+<div id="accordion">
+{{#if projects.length}}
+
+{{#each projects as |project|}}
+
+<h3>Module:{{project.name}}</h3>
+
+<ul><a href="/project/{{project.id}}">{{project.topics}}</a></ul>
+
+{{/each}}
+ {{/if}}
+ </div>
+ 
+<script src="./js/profile.js"></script>
